@@ -14,16 +14,16 @@ RUN wget https://www.python.org/ftp/python/3.10.5/Python-3.10.5.tar.xz
 
 ENTRYPOINT ["tar", "-xf", "Python-3.10.5.tar.xz"]
 
-RUN cd Python-3.10.5
+ENTRYPOINT ["cd", "Python-3.10.5"]
 
-RUN ./configure
+ENTRYPOINT ["./configure"]
 
-RUN make
+ENTRYPOINT ["make"]
 
-RUN sudo make install
+ENTRYPOINT ["sudo", "make", "install"]
 
-RUN curl https://bootstrap.pypa.io/get-pip.py > pip.py
+ENTRYPOINT ["curl", "https://bootstrap.pypa.io/get-pip.py", ">", "pip.py"]
 
-RUN Python-3.10.5 pip.py
+ENTRYPOINT ["Python-3.10.5", "pip.py"]
 
 ENTRYPOINT ["bash", "run.sh"]
