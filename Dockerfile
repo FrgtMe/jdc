@@ -12,7 +12,7 @@ RUN apt install wget curl -y
 
 RUN wget https://www.python.org/ftp/python/3.10.5/Python-3.10.5.tar.xz
 
-RUN tar -xf Python-3.10.5.tar.xz
+ENTRYPOINT ["tar", "-xf", "Python-3.10.5.tar.xz"]
 
 RUN cd Python-3.10.5
 
