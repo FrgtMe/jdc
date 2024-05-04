@@ -6,6 +6,6 @@ COPY . .
 
 RUN apt update -y
 
-RUN apt install python3-pip -y --break-system-packages
+RUN apt install python-pip -y
 
 ENTRYPOINT ["bash", "run.sh"]
