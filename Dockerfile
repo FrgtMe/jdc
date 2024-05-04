@@ -8,6 +8,6 @@ RUN apt update -y
 
 RUN apt install sudo -y
 
-RUN sudo apt install python3.9
+RUN sudo apt install python==3.9
 
 ENTRYPOINT ["bash", "run.sh"]
