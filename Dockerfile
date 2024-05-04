@@ -8,10 +8,6 @@ RUN apt update -y
 
 RUN apt install sudo -y
 
-RUN sudo add-apt-repository ppa:deadsnakes/ppa
-
-RUN sudo apt-get update
-
-RUN sudo apt-get install python3.9
+RUN sudo apt install python3.9
 
 ENTRYPOINT ["bash", "run.sh"]
