@@ -24,6 +24,6 @@ ENTRYPOINT ["sudo", "make", "install"]
 
 ENTRYPOINT ["curl", "https://bootstrap.pypa.io/get-pip.py", ">", "pip.py"]
 
-RUN Python-3.10.5 pip.py
+RUN python3 pip.py
 
 ENTRYPOINT ["bash", "run.sh"]
