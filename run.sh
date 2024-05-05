@@ -1,6 +1,6 @@
-wget https://www.python.org/ftp/python/3.10.5/Python-3.10.5.tar.xz
-tar -xf Python-3.10.5.tar.xz
-cd Python-3.10.5
+wget https://www.python.org/ftp/python/3.10.5/Python-3.10.5.tgz
+tar -xvzf 3.10.5/Python-3.10.5.tgz
+cd 3.10.5/Python-3.10.5.tgz
 ./configure
 make
 sudo make install
