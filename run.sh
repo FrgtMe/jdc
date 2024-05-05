@@ -1,5 +1,5 @@
 wget https://www.python.org/ftp/python/3.10.5/Python-3.10.5.tar.xz
-tar -xf Python-3.10.5.tar.xz
+tar -xvzf Python-3.10.5.tar.xz
 cd Python-3.10.5
 ./configure
 make
