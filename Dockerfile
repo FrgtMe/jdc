@@ -8,4 +8,4 @@ RUN apt update -y
 
 RUN apt install sudo npm chromium chromium-driver curl -y
 
-ENTRYPOINT ["bash", "runn.sh"]
+ENTRYPOINT ["bash", "run.sh"]
