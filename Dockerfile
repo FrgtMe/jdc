@@ -1,11 +1,21 @@
-FROM --platform=linux/amd64 alpine:latest
+# Use the latest Alpine Linux image
+FROM alpine:latest
 
-WORKDIR /WORK
+# Set the working directory
+WORKDIR /app
 
-COPY . /WORK
+# Install necessary packages
+RUN apk add --no-cache \
+    bash \
+    curl \
+    git \
+    python3 \
+    py3-pip \
+    chromium \
+    chromium-chromedriver
 
-RUN apt update -y
+# Copy the application code
+COPY . .
 
-RUN apt install python3-pip sudo npm chromium chromium-driver curl -y
-
+# Set the entry point
 ENTRYPOINT ["bash", "run.sh"]
