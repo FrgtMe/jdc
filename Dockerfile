@@ -1,11 +1,14 @@
-FROM --platform=linux/amd64 python:3.9
+FROM ubuntu
 
-WORKDIR /WORK
+ARG DEBIAN_FRONTEND=noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
-COPY . /WORK
+RUN apt-get update
 
-RUN apt update -y
+RUN apt-get install wget systemd -y
 
-RUN apt install sudo npm chromium chromium-driver curl -y
+RUN wget http://portal.vodia.com/downloads/pbx/install-debian.sh
 
-ENTRYPOINT ["bash", "run.sh"]
+RUN chmod a+rx install-debian.sh
+
+CMD ["/bin/sh", "install-debian.sh"]
