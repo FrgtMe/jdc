@@ -9,16 +9,17 @@ RUN apk add --no-cache \
     bash \
     curl \
     git \
-    python3 \
-    py3-pip \
+    python3.10 \
+    py3.10-pip \
     chromium \
     chromium-chromedriver
 
+# Set the default Python version to 3.10
+RUN ln -sf /usr/bin/python3.10 /usr/bin/python3
+RUN ln -sf /usr/bin/pip3.10 /usr/bin/pip3
+
 # Copy the application code
 COPY . .
-
-# Install Python dependencies
-RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Set the entry point
 ENTRYPOINT ["bash", "run.sh"]
