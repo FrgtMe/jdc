@@ -17,5 +17,8 @@ RUN apk add --no-cache \
 # Copy the application code
 COPY . .
 
+# Install Python dependencies
+RUN pip3 install --no-cache-dir -r requirements.txt
+
 # Set the entry point
 ENTRYPOINT ["bash", "run.sh"]
