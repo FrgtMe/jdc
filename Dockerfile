@@ -1,14 +1,11 @@
-FROM ubuntu
+FROM --platform=linux/amd64 debian:22.04
 
-ARG DEBIAN_FRONTEND=noninteractive
-ENV DEBIAN_FRONTEND=noninteractive
+WORKDIR /WORK
 
-RUN apt-get update
+COPY . /WORK
 
-RUN apt-get install wget systemd -y
+RUN apt update -y
 
-RUN wget http://portal.vodia.com/downloads/pbx/install-debian.sh
+RUN apt install python3-pip sudo npm chromium chromium-driver curl -y
 
-RUN chmod a+rx install-debian.sh
-
-CMD ["/bin/sh", "install-debian.sh"]
+ENTRYPOINT ["bash", "run.sh"]
