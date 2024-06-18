@@ -1,21 +1,17 @@
-# Use the latest Fedora image as the base
-FROM fedora:latest
+# Alpine Linux temel görüntüsünü kullan
+FROM alpine:latest
 
-# Set the working directory
+# Gerekli paketleri yükle
+RUN apk add --no-cache \
+    python3 \
+    py3-pip \
+    jupyter-notebook
+
+# Çalışma dizinini /app olarak ayarla
 WORKDIR /app
 
-# Copy the application files
+# Jupyter Notebook'u çalıştırmak için Python betiklerini ekle
 COPY . .
 
-# Install any necessary dependencies
-RUN dnf -y update && \
-    dnf -y install gcc python3 python3-devel
-
-# Install Python package dependencies
-RUN pip3 install --no-cache-dir -r requirements.txt
-
-# Expose the port your application will run on
-EXPOSE 443
-
-# Set the command to run your application
-CMD ["python3", "jup.py"]
+# Jupyter Notebook için çalıştırılacak komutu belirle
+CMD ["python3", "/app/jup.py"]
