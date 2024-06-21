@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM ubuntu:latest
 WORKDIR /APP
 COPY . /APP
 RUN apt update -y
