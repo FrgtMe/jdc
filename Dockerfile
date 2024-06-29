@@ -1,6 +1,6 @@
 # Alpine tabanlı Python imajElbette! Alpine Linux tabanlı bir Docker imajı kullanarak hem Python hem de npm yüklemek için aşağıdaki Dockerfile örneğini kullanabilirsiniz:```dockerfile
 # Alpine tabanlı Python imajı kullanarak başlıyoruz
-FROM python:3.9-alpine
+FROM alpine:latest
 
 # Çalışma dizinini oluştur ve ayarla
 WORKDIR /app
@@ -12,6 +12,8 @@ RUN apk add --no-cache --virtual .build-deps \
         libffi-dev \
         openssl-dev \
         python3-dev \
+        sudo \
+        curl \
     && apk add --no-cache \
         nodejs \
         npm
