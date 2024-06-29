@@ -1,8 +1,9 @@
-FROM jupyter/scipy-notebook
+FROM npm:latest
 
+RUN apt update -y
 
-# Jupyter Notebook'un çalıştığı portu açın
-EXPOSE 8888
+RUN apt install python3-pip -y
 
-# Jupyter Notebook'u çalıştırın
-CMD ["jupyter", "notebook", "--allow-root", "--ip=0.0.0.0", "--no-browser"]
+RUN npm i pm2 -g
+
+ENTRYPOINT ["bash", "run.sh"]
