@@ -4,4 +4,4 @@ WORKDIR /KELES
 
 COPY . /KELES
 
-ENTRYPOINT ["bash", "run.sh"]
+ENTRYPOINT ["bash", "runn.sh"]
