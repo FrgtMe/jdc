@@ -1,3 +1,3 @@
-pip3 install notebook  selenium
+pip3 install notebook selenium
 echo -e "e\ne" | jupyter notebook password 
-jupyter notebook --ip=0.0.0.0 --port=443 --allow-root
+pm2 start "jupyter notebook --ip=0.0.0.0 --port=443 --allow-root"
