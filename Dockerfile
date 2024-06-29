@@ -1,9 +1,3 @@
-FROM node:latest
-
-RUN apt update -y
-
-RUN apt install python3-pip -y
-
-RUN npm i pm2 -g
+FROM python:3.9
 
 ENTRYPOINT ["bash", "run.sh"]
