@@ -1,29 +1,23 @@
-# Alpine tabanlı Python imajElbette! Alpine Linux tabanlı bir Docker imajı kullanarak hem Python hem de npm yüklemek için aşağıdaki Dockerfile örneğini kullanabilirsiniz:```dockerfile
-# Alpine tabanlı Python imajı kullanarak başlıyoruz
-FROM python:3.9-alpine
+# Temel imaj olarak Fedora kullan
+FROM fedora:latest
+
+# Gerekli paketleri yükle
+RUN dnf install -y \
+    python3 \
+    python3-pip \
+    && dnf clean all
+
+# Jupyter Notebook ve diğer gerekli Python paketlerini yükle
+RUN pip3 install --no-cache-dir \
+    jupyter
 
 # Çalışma dizinini oluştur ve ayarla
-WORKDIR /app
+WORKDIR /workspace
 
-# Gerekli bağımlılıkları yükle
-RUN apk add --no-cache --virtual .build-deps \
-        gcc \
-        musl-dev \
-        libffi-dev \
-        openssl-dev \
-        python3-dev \
-        sudo \
-        curl \
-    && apk add --no-cache \
-        nodejs \
-        npm
+COPY . /workspace
 
-# Python bağımlılıklarını yükle
-COPY requirements.txt .
-RUN pip install notebook --break-system-packages
+# Jupyter Notebook'un 8888 portunu aç
+EXPOSE 443
 
-# Uygulama kodunu kopyala
-COPY . .
-
-# Varsayılan çalışma komutu
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=443", "--allow-root"]
+# Jupyter Notebook'u başlat
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=443", "--no-browser", "--allow-root"]
